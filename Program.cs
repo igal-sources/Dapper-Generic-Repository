@@ -1,7 +1,7 @@
-﻿using DapperGenericRepository.Contracts;
+﻿using System;
+using DapperGenericRepository.Contracts;
 using DapperGenericRepository.Models;
 using DapperGenericRepository.Repositories;
-using System;
 using System.Collections.Generic;
 
 namespace DapperGenericRepository
@@ -9,6 +9,15 @@ namespace DapperGenericRepository
     internal class Program
     {
         public static void Main(string[] args)
+        {
+            ManageCategories();
+
+            Console.WriteLine();
+            Console.WriteLine("end...");
+            Console.ReadLine();
+        }
+
+        private static void ManageCategories()
         {
             var categories = ExecuteGetCategories();
             var categorySingle = GetCategorByID();
@@ -53,10 +62,6 @@ namespace DapperGenericRepository
             {
                 Console.WriteLine($"{category.category_id} - {category.category_name}");
             }
-
-            Console.WriteLine();
-            Console.WriteLine("end...");
-            Console.ReadLine();
         }
 
         private static IEnumerable<categories> Get()
