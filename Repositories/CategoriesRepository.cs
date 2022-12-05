@@ -6,7 +6,7 @@ namespace DapperGenericRepository.Repositories
 {
     public class CategoriesRepository : BaseRepository<categories>, IBikeStoresCategoriesRepository
     {
-        public string connectionString = @"Data Source=.\VULCAN;Initial Catalog=BikeStores;Persist Security Info=True;User ID=CITUser;Password=Vulcan$2010!;MultipleActiveResultSets=True;";
+        public string connectionString = @"Data Source=.\;Initial Catalog=BikeStores;Persist Security Info=True;User ID=sa;Password=4everSQL;MultipleActiveResultSets=True;";
         private readonly string _tableSchema = "production";
         private readonly string _tableName = "categories";
         private readonly string _schemaTableName = "production.categories";
@@ -59,7 +59,7 @@ namespace DapperGenericRepository.Repositories
         }
 
 
-        public void Dispose(){}
+        public void Dispose() { }
 
         public IEnumerable<categories> GetCategories(string spName)
         {

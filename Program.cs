@@ -12,14 +12,16 @@ namespace DapperGenericRepository
         {
             var categories = ExecuteGetCategories();
             var categorySingle = GetCategorByID();
-           
+
             var categoryList = Get();
 
             Console.WriteLine("PrimaryKey Name: " + GetIdColumn());
             Console.WriteLine();
 
             foreach (var category in categoryList)
+            {
                 Console.WriteLine($"{category.category_id} - {category.category_name}");
+            }
 
             Delete(9);
             Delete(10);
@@ -31,7 +33,10 @@ namespace DapperGenericRepository
             Console.WriteLine("After delete...");
             Console.WriteLine();
             foreach (var category in categoryList)
+            {
                 Console.WriteLine($"{category.category_id} - {category.category_name}");
+            }
+
             Console.WriteLine();
 
             InsertMulti();
@@ -45,7 +50,9 @@ namespace DapperGenericRepository
             Console.WriteLine();
 
             foreach (var category in categoryList)
+            {
                 Console.WriteLine($"{category.category_id} - {category.category_name}");
+            }
 
             Console.WriteLine();
             Console.WriteLine("end...");
