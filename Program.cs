@@ -66,15 +66,15 @@ namespace DapperGenericRepository
 
         private static IEnumerable<categories> Get()
         {
-            using (IBikeStoresCategoriesRepository repository = new CategoriesRepository())
+            using (ICategoriesRepository repository = new CategoriesRepository())
             {
-                return repository.GetAll();
+                return repository.GetAllCategories();
             }
         }
 
         private static string GetIdColumn()
         {
-            using (IBikeStoresCategoriesRepository repository = new CategoriesRepository())
+            using (ICategoriesRepository repository = new CategoriesRepository())
             {
                 return repository.GetIdColumn();
             }
@@ -82,7 +82,7 @@ namespace DapperGenericRepository
 
         private static IEnumerable<categories> ExecuteGetCategories()
         {
-            using (IBikeStoresCategoriesRepository repository = new CategoriesRepository())
+            using (ICategoriesRepository repository = new CategoriesRepository())
             {
                 return repository.GetCategories("[production].[GetCategories]");
             }
@@ -90,7 +90,7 @@ namespace DapperGenericRepository
 
         private static IEnumerable<categories> GetCategorByID()
         {
-            using (IBikeStoresCategoriesRepository repository = new CategoriesRepository())
+            using (ICategoriesRepository repository = new CategoriesRepository())
             {
                 return repository.GetCategoryById("[production].[GetCategoryById]", 5);
             }
@@ -98,7 +98,7 @@ namespace DapperGenericRepository
 
         private static void InsertMulti()
         {
-            using (IBikeStoresCategoriesRepository repository = new CategoriesRepository())
+            using (ICategoriesRepository repository = new CategoriesRepository())
             {
                 List<categories> entities = new List<categories>
                 {
@@ -106,29 +106,29 @@ namespace DapperGenericRepository
                     new categories { category_id = 10, category_name = "category 1" }
                 };
 
-                repository.Insert(entities);
+                repository.InsertCategories(entities);
             };
         }
 
         private static void InsertSingle()
         {
-            using (IBikeStoresCategoriesRepository repository = new CategoriesRepository())
+            using (ICategoriesRepository repository = new CategoriesRepository())
             {
-                repository.Insert(new categories { category_id = 11, category_name = "test category 11" });
+                repository.InsertCategory(new categories { category_id = 11, category_name = "test category 11" });
             }
         }
 
         private static void Delete(int Id)
         {
-            using (IBikeStoresCategoriesRepository repository = new CategoriesRepository())
+            using (ICategoriesRepository repository = new CategoriesRepository())
             {
-                repository.DeleteById(Id);
+                repository.DeleteCategoryById(Id);
             }
         }
 
         private static void UpdateMulti()
         {
-            using (IBikeStoresCategoriesRepository repository = new CategoriesRepository())
+            using (ICategoriesRepository repository = new CategoriesRepository())
             {
                 var entities = new List<categories>
                 {
@@ -136,15 +136,15 @@ namespace DapperGenericRepository
                     new categories { category_id = 10, category_name = "test category 10" }
                 };
 
-                repository.Update(entities);
+                repository.UpdateCategories(entities);
             }
         }
 
         private static void UpdateSingle()
         {
-            using (IBikeStoresCategoriesRepository repository = new CategoriesRepository())
+            using (ICategoriesRepository repository = new CategoriesRepository())
             {
-                repository.Update(new categories { category_id = 8, category_name = "test category 8" });
+                repository.UpdateCategory(new categories { category_id = 8, category_name = "test category 8" });
             }
         }
     }

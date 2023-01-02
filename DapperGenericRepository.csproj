@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IBikeStoresCategoriesRepository.cs" />
+    <Compile Include="Contracts\ICategoriesRepository.cs" />
     <Compile Include="Models\categories.cs" />
     <Compile Include="Models\products.cs" />
     <Compile Include="Repositories\BaseGenericRepository.cs" />

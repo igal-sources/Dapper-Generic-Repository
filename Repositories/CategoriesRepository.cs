@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DapperGenericRepository.Repositories
 {
-    public class CategoriesRepository : BaseRepository<categories>, IBikeStoresCategoriesRepository
+    public class CategoriesRepository : BaseRepository<categories>, ICategoriesRepository
     {
         public string connectionString = @"Data Source=.\;Initial Catalog=BikeStores;Persist Security Info=True;User ID=sa;Password=4everSQL;MultipleActiveResultSets=True;";
         private readonly string _tableSchema = "production";
@@ -17,22 +17,22 @@ namespace DapperGenericRepository.Repositories
             _idColumn = GetPrimaryKeyName(_tableSchema, _tableName, connectionString);
         }
 
-        public void DeleteById(int Id)
+        public void DeleteCategoryById(int Id)
         {
             DeleteById(Id, _idColumn, _schemaTableName, connectionString);
         }
 
-        public IEnumerable<categories> GetAll(string where = null)
+        public IEnumerable<categories> GetAllCategories(string where = null)
         {
             return GetAll($"{_tableSchema}.{_tableName}", connectionString);
         }
 
-        public void Insert(categories entity)
+        public void InsertCategory(categories entity)
         {
             Insert(entity, _schemaTableName, connectionString, true);
         }
 
-        public void Insert(IEnumerable<categories> entities)
+        public void InsertCategories(IEnumerable<categories> entities)
         {
             foreach (var entity in entities)
             {
@@ -40,7 +40,7 @@ namespace DapperGenericRepository.Repositories
             }
         }
 
-        public void Update(IEnumerable<categories> entities)
+        public void UpdateCategories(IEnumerable<categories> entities)
         {
             foreach (var entity in entities)
             {
@@ -48,7 +48,7 @@ namespace DapperGenericRepository.Repositories
             }
         }
 
-        public void Update(categories entity)
+        public void UpdateCategory(categories entity)
         {
             Update(entity, _idColumn, _schemaTableName, connectionString);
         }
